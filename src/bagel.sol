@@ -1,6 +1,13 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.20;
 
-contract Bagel {
+import {ERC20} from "@oz/contracts/token/ERC20/ERC20.sol";
+import {Ownable} from "@oz/contracts/access/Ownable.sol";
 
+contract BagelToken is ERC20, Ownable {
+    constructor() ERC20("Bagel Token", "BT") Ownable(msg.sender) {}
+
+    function mint(address account, uint256 amount) external onlyOwner {
+        _mint(account, amount);
+    }
 }
