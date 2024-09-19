@@ -14,11 +14,11 @@ contract DeployMerkleAirdrop is Script {
     // MERKLE ROOT found in output.json
     bytes32 public MERKLE_ROOT = 0x5ac459a81bcaa56a5759053ab8f6bf00f07c221dad9c86e094d605e8bd074603;
 
-    DeployERC20 deployERC20;
-    ERC20 bagel;
+    DeployERC20 public deployERC20;
+    ERC20 public bagel;
 
-    GenerateInput generateInput;
-    MerkleScript generateMerkle;
+    GenerateInput public generateInput;
+    MerkleScript public generateMerkle;
 
     function run() public returns (ERC20, MerkleAirdrop) {
         // Deploy ERC20 token

@@ -7,9 +7,9 @@ import {console} from "forge-std/console.sol";
 
 // Merkle tree input file generator script
 contract GenerateInput is Script {
-    uint256 private constant AMOUNT = 250 * 1e18;
+    uint256 public constant AMOUNT = 250 * 1e18;
     string[] types = new string[](2);
-    uint256 count;
+    uint256 public count;
     string[] whitelist = new string[](4);
     string private constant INPUT_PATH = "/script/target/input.json";
 
