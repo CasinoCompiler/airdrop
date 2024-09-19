@@ -79,6 +79,10 @@ contract MerkleAirdrop is IMerkleAirdrop {
         return address(i_airdropToken);
     }
 
+    function getDecimals() public pure returns(uint256) {
+        return 18;
+    }
+
     function getClaimEligibility(address _address) public view returns (bool) {}
 
     function getClaimStatus(address _address) public view returns (bool) {
