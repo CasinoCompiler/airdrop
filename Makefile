@@ -11,6 +11,9 @@ test:
 mt:
 	forge test --match-test $(filter-out $@,$(MAKECMDGOALS)) -vvvv
 
+mtxt:
+	forge test --match-test $(filter-out $@,$(MAKECMDGOALS)) -vvvv >test.txt
+
 report:
 	forge coverage --report debug >debug.txt
 	python3 debug_refiner.py
