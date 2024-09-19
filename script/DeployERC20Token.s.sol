@@ -14,7 +14,7 @@ contract DeployERC20 is Script {
     address public deployerAddress = address(this);
     address public owner;
 
-    uint256 public INITIAL_MINT_AMOUNT = 1_000_000;
+    uint256 public INITIAL_MINT_AMOUNT = 1_000_000 * 1e18;
 
     function run() public returns (ERC20) {
         vm.startBroadcast();

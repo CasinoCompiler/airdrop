@@ -29,7 +29,7 @@ contract DeployERC20Test is Test {
     }
 
     function test_InitialSupply() public view {
-        uint256 expectedInitialMint = 1_000_000;
+        uint256 expectedInitialMint = 1_000_000 * 1e18;
         uint256 actualBalance = ERC20(token).balanceOf(owner);
 
         assertEq(expectedInitialMint, actualBalance);
