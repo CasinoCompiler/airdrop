@@ -4,7 +4,11 @@ out = "out"
 libs = ["lib"]
 remappings = [
     "@forge/=lib/forge-std",
-    "@oz/=lib/openzeppelin-contracts"
+    "@oz/=lib/openzeppelin-contracts",
+    "@murky/=lib/murky"
+]
+fs_permissions = [
+    {access = "read-write", path = "./script/target"}
 ]
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
