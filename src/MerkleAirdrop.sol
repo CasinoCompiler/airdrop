@@ -34,7 +34,6 @@ contract MerkleAirdrop is IMerkleAirdrop {
     bytes32 private immutable i_merkleRoot;
     IERC20 private immutable i_airdropToken;
 
-    address[] private s_claimers;
     mapping(address => bool) private s_addressToHasClaimed;
 
     /**
@@ -62,7 +61,6 @@ contract MerkleAirdrop is IMerkleAirdrop {
         if (!MerkleProof.verify(merkleProof, i_merkleRoot, leaf)) {
             revert MerkleAirdrop__ProofDenied();
         }
-        s_claimers.push(claimAddress);
         s_addressToHasClaimed[claimAddress] = true;
         i_airdropToken.safeTransfer(claimAddress, amountToClaim);
         emit Claimed(claimAddress, amountToClaim);
