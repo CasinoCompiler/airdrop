@@ -71,6 +71,14 @@ contract MerkleAirdrop is IMerkleAirdrop {
     /**
      * Getter Functions
      */
+    function getMerkelRoot() public view returns (bytes32) {
+        return i_merkleRoot;
+    }
+
+    function getAirdropToken() public view returns (address) {
+        return address(i_airdropToken);
+    }
+
     function getClaimEligibility(address _address) public view returns (bool) {}
 
     function getClaimStatus(address _address) public view returns (bool) {
