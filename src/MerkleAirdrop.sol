@@ -79,7 +79,7 @@ contract MerkleAirdrop is IMerkleAirdrop {
         return address(i_airdropToken);
     }
 
-    function getDecimals() public pure returns(uint256) {
+    function getDecimals() public pure returns (uint256) {
         return 18;
     }
 
