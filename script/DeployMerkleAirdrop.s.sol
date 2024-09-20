@@ -20,7 +20,6 @@ contract DeployMerkleAirdrop is Script {
     GenerateInput public generateInput;
     MerkleScript public generateMerkle;
 
-
     uint256 public CLAIM_AMOUNT;
     uint256 public WHITELIST_COUNT = 4;
     uint256 public AMOUNT_TO_SEND_TO_AIRDROP_ADDRESS;
