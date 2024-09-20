@@ -20,33 +20,27 @@ contract MerkleAirdropTest is Test {
     address USER_3 = 0x2ea3970Ed82D5b30be821FAAD4a731D35964F7dd;
     address USER_4 = 0xf6dBa02C01AF48Cf926579F77C9f874Ca640D91D;
 
-    uint256 CLAIM_AMOUNT;
-    uint256 WHITELIST_COUNT = 4;
-    uint256 AMOUNT_TO_SEND_TO_AIRDROP_ADDRESS;
+    uint256 CLAIM_AMOUNT = deployMerkleAirdrop.CLAIM_AMOUNT();
+    // uint256 WHITELIST_COUNT = 4;
+    // uint256 AMOUNT_TO_SEND_TO_AIRDROP_ADDRESS;
     bytes32[] public PROOF;
 
     function setUp() public {
         deployMerkleAirdrop = new DeployMerkleAirdrop();
         (bagel, airdrop) = deployMerkleAirdrop.run();
         generateInput = new GenerateInput();
-        CLAIM_AMOUNT = generateInput.AMOUNT();
-        AMOUNT_TO_SEND_TO_AIRDROP_ADDRESS = CLAIM_AMOUNT * WHITELIST_COUNT;
+        // CLAIM_AMOUNT = generateInput.AMOUNT();
+        // AMOUNT_TO_SEND_TO_AIRDROP_ADDRESS = CLAIM_AMOUNT * WHITELIST_COUNT;
         OWNER = Ownable(address(bagel)).owner();
 
         // Send tokens to airdrop address for claim
-        vm.prank(OWNER);
-        ERC20(address(bagel)).transfer(address(airdrop), AMOUNT_TO_SEND_TO_AIRDROP_ADDRESS);
+        // vm.prank(OWNER);
+        // ERC20(address(bagel)).transfer(address(airdrop), AMOUNT_TO_SEND_TO_AIRDROP_ADDRESS);
     }
 
     /*//////////////////////////////////////////////////////////////
                                   INIT
     //////////////////////////////////////////////////////////////*/
-    function test_TokensSentToAirdropContract() public view {
-        uint256 balance = ERC20(address(bagel)).balanceOf(address(airdrop));
-        uint256 expectedBalance = 1e21;
-
-        assertEq(expectedBalance, balance);
-    }
 
     /*//////////////////////////////////////////////////////////////
                                  CLAIM

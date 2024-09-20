@@ -20,6 +20,11 @@ contract DeployMerkleAirdrop is Script {
     GenerateInput public generateInput;
     MerkleScript public generateMerkle;
 
+
+    uint256 public CLAIM_AMOUNT;
+    uint256 public WHITELIST_COUNT = 4;
+    uint256 public AMOUNT_TO_SEND_TO_AIRDROP_ADDRESS;
+
     function run() public returns (ERC20, MerkleAirdrop) {
         // Deploy ERC20 token
         deployERC20 = new DeployERC20();
@@ -27,6 +32,8 @@ contract DeployMerkleAirdrop is Script {
 
         // Generate Merkle Proof
         generateInput = new GenerateInput();
+        CLAIM_AMOUNT = generateInput.AMOUNT();
+        AMOUNT_TO_SEND_TO_AIRDROP_ADDRESS = CLAIM_AMOUNT * WHITELIST_COUNT;
         generateInput.run();
         generateMerkle = new MerkleScript();
         generateMerkle.run();
@@ -34,6 +41,7 @@ contract DeployMerkleAirdrop is Script {
         // Deploy Merkle Airdrop
         vm.startBroadcast();
         MerkleAirdrop airdrop = new MerkleAirdrop(MERKLE_ROOT, bagel);
+        ERC20(address(bagel)).transfer(address(airdrop), AMOUNT_TO_SEND_TO_AIRDROP_ADDRESS);
         vm.stopBroadcast();
 
         return (bagel, airdrop);

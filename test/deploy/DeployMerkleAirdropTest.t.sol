@@ -31,6 +31,13 @@ contract DeployMerkleAirdropTest is Test {
         assert(address(airdrop) != address(0));
     }
 
+    function test_TokensSentToAirdropContract() public view {
+        uint256 balance = ERC20(address(token)).balanceOf(address(airdrop));
+        uint256 expectedBalance = 1e21;
+
+        assertEq(expectedBalance, balance);
+    }
+
     /**
      * @dev implement programmatic way to test merkle root.
      */
