@@ -5,7 +5,8 @@ libs = ["lib"]
 remappings = [
     "@forge/=lib/forge-std",
     "@oz/=lib/openzeppelin-contracts",
-    "@murky/=lib/murky"
+    "@murky/=lib/murky",
+    "@devops/=lib/foundry-devops"
 ]
 fs_permissions = [
     {access = "read-write", path = "./script/target"}
