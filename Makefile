@@ -20,5 +20,8 @@ report:
 
 summary:; forge coverage --report summary >summary.txt
 
+deploy-anvil:
+	forge script script/DeployMerkleAirdrop.s.sol:DeployMerkleAirdrop --rpc-url $(ANVIL_RPC)
+	
 %:
 	@

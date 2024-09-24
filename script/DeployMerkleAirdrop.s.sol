@@ -6,7 +6,6 @@ import {console} from "@forge/src/Test.sol";
 import {ERC20} from "@oz/contracts/token/ERC20/ERC20.sol";
 import {DeployERC20} from "./DeployERC20Token.s.sol";
 import {MerkleAirdrop} from "../src/MerkleAirdrop.sol";
-
 import {GenerateInput} from "./GenerateInput.s.sol";
 import {MerkleScript} from "@murky/script/Merkle.s.sol";
 
