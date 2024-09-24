@@ -10,5 +10,12 @@ interface IMerkleAirdrop {
     /*//////////////////////////////////////////////////////////////
                                FUNCTIONS
     //////////////////////////////////////////////////////////////*/
-    function claim(address addressToClaim, uint256 amountToClaim, bytes32[] calldata merkleProof) external;
+    function claim(
+        address addressToClaim,
+        uint256 amountToClaim,
+        bytes32[] calldata merkleProof,
+        uint8 v,
+        bytes32 r,
+        bytes32 s
+    ) external;
 }

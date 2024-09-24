@@ -73,7 +73,7 @@ contract MerkleAirdrop is IMerkleAirdrop, EIP712 {
         if (s_addressToHasClaimed[claimAddress]) {
             revert MerkleAirdrop__AlreadyClaimed();
         }
-        // address account = msg.sender;
+
         bytes32 message = getMessage(claimAddress, amountToClaim);
 
         // Check signature
