@@ -6,8 +6,8 @@ import {DevOpsTools} from "@devops/src/DevOpsTools.sol";
 import {IMerkleAirdrop} from "../src/IMerkleAirdrop.sol";
 import {DeployMerkleAirdrop} from "../../script/DeployMerkleAirdrop.s.sol";
 
-contract MerkleAirdropInteractions is Script{
-error __ClaimAirdropScript__InvalidSignatureLength();
+contract MerkleAirdropInteractions is Script {
+    error __ClaimAirdropScript__InvalidSignatureLength();
 
     DeployMerkleAirdrop deployMerkleAirdrop;
 
@@ -19,7 +19,8 @@ error __ClaimAirdropScript__InvalidSignatureLength();
     uint8 v;
     bytes32 r;
     bytes32 s;
-    bytes private SIGNATURE = hex"fbd2270e6f23fb5fe9248480c0f4be8a4e9bd77c3ad0b1333cc60b5debc511602a2a06c24085d8d7c038bad84edc53664c8ce0346caeaa3570afec0e61144dc11c";
+    bytes private SIGNATURE =
+        hex"fbd2270e6f23fb5fe9248480c0f4be8a4e9bd77c3ad0b1333cc60b5debc511602a2a06c24085d8d7c038bad84edc53664c8ce0346caeaa3570afec0e61144dc11c";
 
     function run() external {
         deployMerkleAirdrop = new DeployMerkleAirdrop();
@@ -31,21 +32,14 @@ error __ClaimAirdropScript__InvalidSignatureLength();
     function claimAirdrop(address airdropContractAddress) public {
         vm.startBroadcast();
         (v, r, s) = splitSignature(SIGNATURE);
-        IMerkleAirdrop(airdropContractAddress).claim(
-            CLAIMING_ADDRESS,
-            CLAIM_AMOUNT,
-            PROOF,
-            v,
-            r,
-            s
-        );
+        IMerkleAirdrop(airdropContractAddress).claim(CLAIMING_ADDRESS, CLAIM_AMOUNT, PROOF, v, r, s);
         vm.stopBroadcast();
     }
 
     function splitSignature(bytes memory sig) public pure returns (uint8 _v, bytes32 _r, bytes32 _s) {
         if (sig.length != 65) {
             revert __ClaimAirdropScript__InvalidSignatureLength();
-        }   
+        }
         assembly {
             _r := mload(add(sig, 32))
             _s := mload(add(sig, 64))
@@ -53,5 +47,4 @@ error __ClaimAirdropScript__InvalidSignatureLength();
         }
         return (_v, _r, _s);
     }
-
 }
